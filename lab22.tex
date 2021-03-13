@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{article} 
+
+\usepackage{cmap}                   
+\usepackage{mathtext}               
+\usepackage[T2A]{fontenc}           
+\usepackage[utf8]{inputenc}         
+\usepackage[english,russian]{babel} 
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % математика
+
+\usepackage{euscript} 
+\usepackage{mathrsfs} 
+
+\setcounter{page}{603}
+
+\begin{document} 
+
+\[
+    I_n=\int\limits_0^{\pi/2} \sin^nx \, dx = 
+    \int\limits_0^{\pi/2} \cos^nx \, dx =\begin{cases}
+        \frac{(n-1)!!}{n!!}\frac{\pi}{2} &\text{при n чётном,} \\
+        \frac{(n-1)!!}{n!!} &\text{при n нечётном.}
+    \end{cases}
+    \tag{26.7}
+\]
+
+Из формулы (26.7) легко получается \textit{формула Валлиса}\footnote{Дж. Валлис (1616 --- 1703) --- английский математик.}, которая понадобится в дальнейшем:
+\[ \frac{\pi}{2} = \lim_{n\to \infty} \frac{1}{2n + 1} \left[ \frac{(2n)!!}{(2n-1)!!} \right]^2. \tag{26.8}\]
+Докажем её. Интегрируя неравенство
+\[ \sin^{2n + 1}x \leqslant \sin^{2n}x \leqslant \sin^{2n - 1}x, \, 0 \leqslant x \leqslant \frac{\pi}{2},\]
+по отрезку $[0, \pi/2]$
+\[ \int\limits_0^{\pi/2} \sin^{2n + 1}x \, dx \leqslant \int\limits_0^{\pi/2} \sin^{2n}x \, dx \leqslant \int\limits_0^{\pi/2} \sin^{2n - 1}x \, dx, \, 0 \leqslant x \leqslant \frac{\pi}{2},\]
+Согласно (26.7),
+\[ \frac{(2n)!!}{(2n+1)!!} \leqslant \frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2} 
+\leqslant \frac{(2n-2)!!}{(2n-1)!!},
+\]
+откуда
+\[ x_n \overset{def}{=} \frac{1}{2n + 1} \left[ \frac{(2n)!!}{(2n-1)!!} \right]^2 \leqslant \frac{\pi}{2} \leqslant \frac{1}{2n} \left[ \frac{(2n)!!}{(2n-1)!!} \right]^2 \overset{def}{=} y_n.   \tag{26.9}\]
+В силу этого неравенства, при $ n \to \infty$
+\[ x_n - y_n = \frac{1}{2n} \frac{1}{2n + 1} \left[ \frac{(2n)!!}{(2n-1)!!} \right]^2 \leqslant \frac{1}{2n}\frac{\pi}{2} \to 0, \]
+поэтому $ \lim\limits_{n \to \infty} (y_n - x_n) = 0$, т.е. длины отрезков $[x_n,y_n]$, содержащих $ \frac{\pi}{2}$, стремятся к нулю и, следовательно, $ \lim\limits_{n \to \infty} x_n = \frac{\pi}{2}$, $ \lim\limits_{n \to \infty} y_n = \frac{\pi}{2}$. Первое из этих равенств, согласно определению $ x_n $ (см. (26.9)), и означает справедливость формулы Валлиса.
+
+
+
+\section*{26.3* Вторая теорема о среднем значении для определённого интеграла}
+
+\textbf{Лемма 1.} \textit{Пусть f --- непрерывная, а g --- возрастающая неотрицательная непрерывно дифференцируемая на отрезке $ [a, b] $ функция. 
+Тогда существует такая точка $ \xi \in  [a, b] $, что} 
+\[ \int\limits_a^b g(x)f(x)\,dx = g(b) \int\limits_{\xi}^b f(x)\,dx \tag{26.10}\]
+
+\textit{Доказательство.} Рассмотрим функцию
+\[ F(x) \overset{def}{=} g(b) \int\limits_x^b f(t)\,dt, \, a \leqslant x \leqslant b \tag{26.11}\]
+
+Функция F, являясь интегралом с переменным нижним пределом интегрирования от интегрируемой (даже непрерывной) функции f, непрерывна на отрезке $ [a, b] $ и поэтому достигает на нём своего наибольшего и наименьшего значения. Если
+
+\[ m = \min_{[a, b]} F(x), \, M = \max_{[a, b]} F(x), \tag{26.12}\]
+то, очевидно,
+\[ m \leqslant F(x) \leqslant M, \, x \in  [a, b].  \tag{26.13}\]
+
+\[ \int\limits_a^b g(x)f(x) \, dx = -\int\limits_a^b g(x) \, dF(x) = -g(x)F(x)\bigg|_a^b + \int\limits_a^b F(x)g'(x) \, dx  = \] 
+\[ =  g(a)F(a) + \int\limits_a^b F(x)g'(x) \, dx, \tag{26.14}\] 
+так как, в силу (26.11), $ F(b) = 0 $.
+
+Функция $ g $ возрастающая, поэтому имеем $ g'(x) \geqslant 0 $ для всех $ x \in [a, b] $. Применив это неравенство, неравенство (26.13) и заметив, что из неотрицательности $ g $ на $[a,b]$ следует, в частности, что $ g(a) \geqslant 0 $, получим оценки
+
+\[ g(a)F(a) + \int\limits_a^b F(x)g'(x) \, dx \leqslant Mg(a) + M\int\limits_a^b g'(x) \, dx = \] 
+\[ = Mg(a) + M[g(b) - g(a)] = Mg(b), \] 
+\[ g(a)F(a) + \int\limits_a^b F(x)g'(x) \, dx \geqslant mg(a) + m[g(b) - g(a)] = mg(b). \] 
+Таким образом (см. (26.14)), имеем
+\[ mg(b) \leqslant \int\limits_a^b g(x)f(x) \, dx \leqslant Mg(b). \] 
+Если $ g(b) = 0 $, то из неотрицательности и возрастания функции g следует, что 
+$ g(x) \equiv 0 $ на $ [a,b] $. В этом случае формула (26.10) справедлива при любом выборе $ \xi \in  [a, b] $.
+
+Если же $ g(x) > 0 $, то
+
+\[ m \leqslant \frac{1}{g(b)}\int\limits_a^b g(x)f(x) \, dx \leqslant M. \] 
+
+Непрерывная на отрезке $ [a,b] $ функция $ F $ принимает на этом отрезке любое значение, лежащее между её минимальным значением m и максимальным $ M $  (см. (26.12)), поэтому существует такая точка $ \xi \in  [a, b] $, что
+
+\[ F(\xi) = \frac{1}{g(b)}\int\limits_a^b g(x)f(x) \, dx. \] 
+В силу определения (26.11), это и есть формула (26.10). $ \square $
+
+\end{document}
+
+
+
