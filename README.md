@@ -8,7 +8,7 @@
 
 ### Зачёт №2 ###
 
-Acc - https://leetcode.com/FedoskaF/
+Account - https://leetcode.com/FedoskaF/
 
 814 - https://leetcode.com/problems/binary-tree-pruning/submissions/
 
