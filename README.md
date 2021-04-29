@@ -9,5 +9,7 @@
 ### Зачёт №2 ###
 
 Acc - https://leetcode.com/FedoskaF/
+
 814 - https://leetcode.com/problems/binary-tree-pruning/submissions/
+
 1302 - https://leetcode.com/problems/deepest-leaves-sum/submissions/
